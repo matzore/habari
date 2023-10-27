@@ -8,7 +8,6 @@ Description=Habari Metadata
 Type=simple
 Restart=always
 RestartSec=5
-User=studiouser
 ExecStart=/home/studiouser/workspace/pyvenvs/habari/bin/python -u /home/studiouser/workspace/habari/collector.py
 WorkingDirectory=/home/studiouser/workspace/habari/
 
