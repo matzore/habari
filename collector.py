@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 import traceback
 from time import sleep
 from rich import print
@@ -20,6 +21,8 @@ while True:
                 backend.push(song_metadata)
                 print("Pushed song to backend")
                 print(song_metadata)
+                sys.stdout.flush()
+
                 sleep_for = int(current_song["Duration"]) - int(current_song["Elapsed"]) + 1
                 sleep(sleep_for)
             else:
