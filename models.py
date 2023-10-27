@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import BaseModel, Field
 from rich import print
 
@@ -7,17 +9,17 @@ from metadata_utils import MetadataUtils
 
 
 class SongMetadata(BaseModel):
-    artist: str | None = Field(..., alias='Artist')
-    album: str | None = Field(..., alias='Album')
-    title: str | None = Field(..., alias='Title')
-    filepath: str | None = Field(..., alias='Path')
-    duration: str | None = Field(..., alias='Duration')
-    zone: str | None = Field(..., alias='Zone')
-    genre: str | None = None
-    release_date: str | None = None
-    mbid: str | None = None
-    metadata_url: str | None = None
-    image_url: str | None = None
+    artist: Union[str, None] = Field(..., alias='Artist')
+    album: Union[str, None] = Field(..., alias='Album')
+    title: Union[str, None] = Field(..., alias='Title')
+    filepath: Union[str, None] = Field(..., alias='Path')
+    duration: Union[str, None] = Field(..., alias='Duration')
+    zone: Union[str, None] = Field(..., alias='Zone')
+    genre: Union[str, None] = None
+    release_date: Union[str, None] = None
+    mbid: Union[str, None] = None
+    metadata_url: Union[str, None] = None
+    image_url: Union[str, None] = None
 
     def model_post_init(self, __context) -> None:
         MetadataUtils(self)
