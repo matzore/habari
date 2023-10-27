@@ -10,7 +10,6 @@ from mutagen.flac import FLAC
 from mutagen.id3 import ID3
 from mutagen.mp3 import MP3
 from mutagen.oggvorbis import OggVorbis
-from rich import print
 
 if TYPE_CHECKING:
     from models import SongMetadata
@@ -61,7 +60,6 @@ class MetadataUtils:
 
     def _parse_mp3(self):
         id3_metadata = ID3(self.song.filepath)
-        print(id3_metadata)
 
         self.song.album = safe_get(id3_metadata, 'TALB')
         self.song.title = safe_get(id3_metadata, 'TIT2')
