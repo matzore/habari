@@ -1,6 +1,9 @@
+from __future__ import annotations
+
+
 import os
 import time
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Union
 
 import requests
 from mutagen.flac import FLAC
@@ -88,14 +91,14 @@ class MetadataUtils:
         if response.status_code == 200:
             try:
                 return response.json()['images'][0]['thumbnails']['large']
-            except KeyError | IndexError:
+            except Union[KeyError, IndexError]:
                 pass
             try:
                 return response.json()['images'][0]['thumbnails']['small']
-            except KeyError | IndexError:
+            except Union[KeyError, IndexError]:
                 pass
             try:
                 return response.json()['images'][0]['image']
-            except KeyError | IndexError:
+            except Union[KeyError, IndexError]:
                 pass
         return None
