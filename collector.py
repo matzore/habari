@@ -15,9 +15,8 @@ while True:
             data = response.json()
             if "current_song" in data:
                 current_song = data["current_song"]
-                SongMetadata(**current_song)
                 backend = Backend()
-                backend.push(current_song)
+                backend.push( SongMetadata(**current_song))
                 sleep_for = current_song["Duration"] - current_song["Elapsed"] + 1
                 sleep(sleep_for)
             else:
