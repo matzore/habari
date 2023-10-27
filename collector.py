@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import traceback
 from time import sleep
-
+from rich import print
 import requests
 
 from backend import Backend
@@ -16,7 +16,10 @@ while True:
             if "current_song" in data:
                 current_song = data["current_song"]
                 backend = Backend()
-                backend.push(SongMetadata(**current_song))
+                song_metadata = SongMetadata(**current_song)
+                backend.push(song_metadata)
+                print("Pushed song to backend")
+                print(song_metadata)
                 sleep_for = int(current_song["Duration"]) - int(current_song["Elapsed"]) + 1
                 sleep(sleep_for)
             else:
