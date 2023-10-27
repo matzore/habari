@@ -29,4 +29,6 @@ while True:
                 sleep(5)
     except Exception as e:
         traceback.print_exc()
+        sys.stdout.flush()
+
         sleep(5)
