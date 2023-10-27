@@ -9,6 +9,8 @@ import requests
 from backend import Backend
 from models import SongMetadata
 
+print("Starting collector")
+sys.stdout.flush()
 while True:
     try:
         response = requests.get('http://localhost:9670')
