@@ -10,7 +10,6 @@ from backend import Backend
 from models import SongMetadata
 
 print("Starting collector")
-sys.stdout.flush()
 while True:
     try:
         response = requests.get('http://localhost:9670')
@@ -23,7 +22,6 @@ while True:
                 backend.push(song_metadata)
                 print("Pushed song to backend")
                 print(song_metadata)
-                sys.stdout.flush()
 
                 sleep_for = int(current_song["Duration"]) - int(current_song["Elapsed"]) + 1
                 sleep(sleep_for)
@@ -31,6 +29,5 @@ while True:
                 sleep(5)
     except Exception as e:
         traceback.print_exc()
-        sys.stdout.flush()
 
         sleep(5)

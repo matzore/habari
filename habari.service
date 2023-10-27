@@ -1,8 +1,8 @@
 [Unit]
 Description=Habari Metadata
-Requires=scheduler-metadata-provider.service
-After=scheduler-metadata-provider.service
-StopWhenUnneeded=true
+#Requires=scheduler-metadata-provider.service
+#After=scheduler-metadata-provider.service
+#StopWhenUnneeded=true
 
 [Service]
 Type=simple
@@ -14,3 +14,5 @@ WorkingDirectory=/home/studiouser/workspace/habari/
 
 [Install]
 WantedBy=radio.target
+
+
