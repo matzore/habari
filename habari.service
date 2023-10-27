@@ -1,0 +1,16 @@
+[Unit]
+Description=Habari Metadata
+Requires=scheduler-metadata-provider.service
+After=scheduler-metadata-provider.service
+StopWhenUnneeded=true
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=user
+ExecStart=/home/studiouser/workspace/pyvenvs/habari/bin/python -u /home/studiouser/workspace/habari/collector.py
+WorkingDirectory=/home/studiouser/workspace/habari/
+
+[Install]
+WantedBy=radio.target
